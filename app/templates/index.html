@@ -1,2 +1,13 @@
 <!-- The app's only page. Will allow users to view games, add courses, and visualize conflicts --->
- 
+<!DOCTYPE html>
+<head>
+    <title>Purdue Gameday Parking</title>
+</head>
+<body>
+    <!-- List of games -->
+    {% for game in games %}
+        <li>{{ game.type }} vs. {{ game.team }} - {{ game.dayOfWeek }}, {{ game.displayDate }} @ {{ game.displayTime }}</li>
+    {% else %}
+        <li>No games found</li>
+    {% endfor %}
+</body>

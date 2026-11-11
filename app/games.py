@@ -50,6 +50,8 @@ def get_weekday_home_games_from_espn(league_path, type):
                     "team" : game["competitions"][0]['competitors'][1]['team']['shortDisplayName'], # The opposing team name
                     "dateTime" : date_time.isoformat(),  # ISO timestamp
                     "dayOfWeek" : day_of_week,  # The day of the week in EST
-                    "time" : date_time.strftime("%H:%M") # Should be usefull for determining conflicts
+                    "time" : date_time.strftime("%H:%M"), # Time in military time
+                    "displayTime" : date_time.strftime("%I:%M %p"), # Displays time in AM and PM
+                    "displayDate" : date_time.strftime("%m/%d") # Display the date without the year
                 })
     return games
