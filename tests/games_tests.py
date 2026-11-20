@@ -1,5 +1,5 @@
 # `pip install pytest` to install pytest
-# `pytest games_tests.py` to run tests
+# `pytest games_tests.py` to run tests, must be in /tests
 
 from app.games import get_weekday_home_games
 from datetime import datetime
