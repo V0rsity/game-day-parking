@@ -1,7 +1,7 @@
 # `pip install pytest` to install pytest
 # `pytest course_tests.py` to run tests, must be in /tests
 
-from app.courses import add_course
+from app.courses import add_course, remove_course
 
 courses = [
     {
@@ -92,3 +92,17 @@ def testBlankCourses():
     result = add_course([], new_course)
     assert result[0]
     assert new_course in result[1]
+
+def testRemoveCourseExists():
+    result = remove_course(courses, "CS180")
+    assert result[0]
+    assert len(result[1]) == 2
+    assert len(courses) == 3 # remove_course should not change the original list
+
+def testRemoveCourseDoesNotExist():
+    result = remove_course(courses, "Soc")
+    assert not result[0]
+
+def testRemoveCourseEmptyArray():
+    result = remove_course([], "CS180")
+    assert not result[0]
