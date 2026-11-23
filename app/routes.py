@@ -3,7 +3,7 @@
 from flask import Blueprint, render_template, redirect, session, request, flash
 from datetime import datetime
 from app.games import get_weekday_home_games
-from app.courses import add_course
+from app.courses import add_course, remove_course
 
 main_blueprint = Blueprint("main", __name__)
 
@@ -48,4 +48,16 @@ def add_user_course():
 
     else:
         flash(message=("Failed to add course: " + result[1]))  # Flash stores error in session to be shown on main page
+        return redirect("/")
+
+@main_blueprint.route("/removeCourse/<course_name>", methods=["POST"])
+def remove_user_course(course_name):
+    courses = session.get("courses") or []
+    result = remove_course(courses, course_name)
+    if result[0]:
+        session["courses"] = result[1]
+        return redirect("/")
+
+    else:
+        flash(message=("Failed to remove course: " + result[1]))
         return redirect("/")

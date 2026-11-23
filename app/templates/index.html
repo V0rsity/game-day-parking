@@ -14,7 +14,13 @@
     {% endwith %}
     <!-- Course List -->
     {% for course in courses %}
-        <li>{{ course.name }} {{ course.displayStartTime }} to {{ course.displayEndTime }}</li>
+        <li>
+            <p>{{ course.name }} {{ course.displayStartTime }} to {{ course.displayEndTime }}</p>
+            <!-- Remove course button -->
+            <form method="POST" action="{{ url_for('main.remove_user_course', course_name=course.name) }}">
+                <button type="submit">Remove</button>
+            </form>
+        </li>
     {% else %}
         <li>Add a course using the form</li>
     {% endfor %}
