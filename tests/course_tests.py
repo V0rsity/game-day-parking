@@ -93,6 +93,66 @@ def testBlankCourses():
     assert result[0]
     assert new_course in result[1]
 
+def testNewCourseBlank():
+    new_course = {
+        "name" : "",
+        "days" : ["Thursday"],
+        "startTime" : "15:30",
+        "endTime" : "16:20",
+        "displayStartTime" : "03:30 PM",
+        "displayEndTime" : "04:20 PM",
+    }
+    result = add_course(courses, new_course)
+    assert not result[0]
+
+def testNewCourseDaysEmpty():
+    new_course = {
+        "name" : "Soc",
+        "days" : [],
+        "startTime" : "15:30",
+        "endTime" : "16:20",
+        "displayStartTime" : "03:30 PM",
+        "displayEndTime" : "04:20 PM",
+    }
+    result = add_course(courses, new_course)
+    assert not result[0]
+
+def testNewCourseTimeNone():
+    new_course = {
+        "name" : "Soc",
+        "days" : ["Wednesday"],
+        "startTime" : None,
+        "endTime" : "16:20",
+        "displayStartTime" : None,
+        "displayEndTime" : "04:20 PM",
+    }
+    result = add_course(courses, new_course)
+    assert not result[0]
+
+def testNewCourseStartAfterEnd():
+    new_course = {
+        "name" : "Soc",
+        "days" : ["Wednesday"],
+        "startTime" : "17:30",
+        "endTime" : "16:20",
+        "displayStartTime" : "5:30 PM",
+        "displayEndTime" : "04:20 PM",
+    }
+    result = add_course(courses, new_course)
+    assert not result[0]
+
+def testNewCourseStartEqualsEnd():
+    new_course = {
+        "name" : "Soc",
+        "days" : ["Wednesday"],
+        "startTime" : "16:20",
+        "endTime" : "16:20",
+        "displayStartTime" : "04:20 PM",
+        "displayEndTime" : "04:20 PM",
+    }
+    result = add_course(courses, new_course)
+    assert not result[0]
+
 def testRemoveCourseExists():
     result = remove_course(courses, "CS180")
     assert result[0]

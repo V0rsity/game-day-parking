@@ -4,6 +4,42 @@
     <title>Purdue Gameday Parking</title>
 </head>
 <body>
+    <!-- Error Messages (if any exist in session through flash) -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <!-- Course List -->
+    {% for course in courses %}
+        <li>{{ course.name }} {{ course.displayStartTime }} to {{ course.displayEndTime }}</li>
+    {% else %}
+        <li>Add a course using the form</li>
+    {% endfor %}
+    <!-- Course input form -->
+    <form method="POST" action="/addCourse">
+        <label for="course_name">Course Name</label>
+        <input type="text" id="course_name" name="course_name" required>
+
+        <label for="course_days">Course Days</label>
+        <select id="course_days" name="course_days" size="5" multiple required>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+        </select>
+
+        <label for="course_start">Start Time</label>
+        <input type="time" id="course_start" name="course_start" required>
+
+        <label for="course_end">End Time</label>
+        <input type="time" id="course_end" name="course_end" required>
+
+        <button type="submit">Add Course</button>
+    </form>
     <!-- List of games -->
     {% for game in games %}
         <li>{{ game.type }} vs. {{ game.team }} - {{ game.dayOfWeek }}, {{ game.displayDate }} @ {{ game.displayTime }}</li>
