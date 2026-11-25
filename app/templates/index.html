@@ -47,9 +47,17 @@
         <button type="submit">Add Course</button>
     </form>
     <!-- List of games -->
+    <ul>
     {% for game in games %}
         <li>{{ game.type }} vs. {{ game.team }} - {{ game.dayOfWeek }}, {{ game.displayDate }} @ {{ game.displayTime }}</li>
+        <!-- Sublist of courses that likely conflict with the game's tow time -->
+        <ul>
+        {% for conflict in game.conflicts %}
+            <li>{{ conflict.course }} ({{ conflict.startTime }} to {{ conflict.endTime }}) - {{ conflict.conflictLevel }}</li>
+        {% endfor %}
+        </ul>
     {% else %}
         <li>No games found</li>
     {% endfor %}
+    </ul>
 </body>

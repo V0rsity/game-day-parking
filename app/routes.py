@@ -4,6 +4,7 @@ from flask import Blueprint, render_template, redirect, session, request, flash
 from datetime import datetime
 from app.games import get_weekday_home_games
 from app.courses import add_course, remove_course
+from app.conflicts import add_conflicts
 
 main_blueprint = Blueprint("main", __name__)
 
@@ -12,6 +13,7 @@ main_blueprint = Blueprint("main", __name__)
 def main_page():
     courses = session.get("courses") or []
     games = get_weekday_home_games()
+    add_conflicts(games, courses)
     return render_template("index.html", games=games, courses=courses)
 
 @main_blueprint.route("/addCourse", methods=["POST"])
