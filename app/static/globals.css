@@ -9,12 +9,6 @@ body {
     background-color: #3d3c3c;
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
 /* Top bar */
 
 .topbar {
@@ -42,6 +36,12 @@ ul {
     justify-content: center;
     gap: 15px;
     width: 100%;
+}
+
+.courses ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 .courses .container {
@@ -114,6 +114,11 @@ h2 {
     font-size: 18px;
 }
 
+.games ul {
+    list-style-type: none;
+    padding: 0;
+}
+
 .conflict-list {
     margin-left: 20px;
     margin-right: 10px;
@@ -133,4 +138,32 @@ h2 {
 .conflict-badge {
     padding: 4px 8px 4px 8px;
     border-radius: 5px;
+}
+
+/* Notes section */
+
+.notes {
+    margin-top: 25px;
+    background-color: #CFB991;
+    color: black;
+    width: 100%;
+}
+
+.notes h4 {
+    margin-top: 0;
+}
+
+.notes li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.notes-container {
+    padding: 30px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
