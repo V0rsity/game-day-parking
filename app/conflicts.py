@@ -38,7 +38,8 @@ def add_conflicts(games, courses):
                         "course" : course["name"],
                         "startTime" : course["displayStartTime"],
                         "endTime" : course["displayEndTime"],
-                        "conflictLevel" : "Very Likely"
+                        "conflictLevel" : "Very Likely",
+                        "conflictColor" : "#FF000095"
                     })
                     continue
 
@@ -48,7 +49,8 @@ def add_conflicts(games, courses):
                         "course" : course["name"],
                         "startTime" : course["displayStartTime"],
                         "endTime" : course["displayEndTime"],
-                        "conflictLevel" : "Likely"
+                        "conflictLevel" : "Likely",
+                        "conflictColor" : "#FFA50095"
                     })
 
                 # If the course falls in the possible buffer time, the likelihood of conflicting with tow time is a toss-up
@@ -57,7 +59,8 @@ def add_conflicts(games, courses):
                         "course" : course["name"],
                         "startTime" : course["displayStartTime"],
                         "endTime" : course["displayEndTime"],
-                        "conflictLevel" : "Possible"
+                        "conflictLevel" : "Possible",
+                        "conflictColor" : "#FFFF0095"
                     })
 
         game["conflicts"] = conflicts

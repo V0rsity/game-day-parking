@@ -95,7 +95,9 @@
                             <p><b>{{ conflict.course }}</b></p>
                             <p>{{ conflict.startTime }} - {{ conflict.endTime }}</p>
                         </div>
-                        <p><b>{{ conflict.conflictLevel }}</b></p>
+                        <div class="conflict-badge" style="background-color: {{ conflict.conflictColor }};">
+                            <p><b>{{ conflict.conflictLevel }}</b></p>
+                        </div>
                     </li>
                 {% endfor %}
                 </ul>

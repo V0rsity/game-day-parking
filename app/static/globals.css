@@ -116,6 +116,7 @@ h2 {
 
 .conflict-list {
     margin-left: 20px;
+    margin-right: 10px;
 }
 
 .conflict-list li {
@@ -127,4 +128,9 @@ h2 {
 
 .conflict-list p {
     margin: 0;
+}
+
+.conflict-badge {
+    padding: 4px 8px 4px 8px;
+    border-radius: 5px;
 }
