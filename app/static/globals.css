@@ -1,1 +1,130 @@
 /* Stylesheet for index.html */
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #3d3c3c;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Top bar */
+
+.topbar {
+    background-color: black;
+    color: #ddd;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.topbar img {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.topbar h1 {
+    margin-bottom: 0;
+}
+
+/* Courses section */
+
+.courses {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.courses .container {
+    width: 20%;
+}
+
+.container {
+    padding: 30px;
+    background-color: #CFB991;
+    border-radius: 18px;
+    margin-top: 15px;
+}
+
+h2 {
+    justify-self: center;
+    font-size: 22px;
+    margin-top: 0;
+}
+
+/* Course Form */
+
+#course-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Course List */
+
+#course-list {
+    align-items: center;
+}
+
+#course-list p {
+    font-size: 14px;
+}
+
+#course-list .course-header h4 {
+    margin: 0;
+}
+
+#course-list .course-header {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.delete-button {
+    background: none;
+    border: none;
+    border-radius: 4px;
+}
+
+.delete-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+/* Games section */
+
+.games h4 {
+    margin-bottom: 0;
+    font-size: 18px;
+}
+
+.conflict-list {
+    margin-left: 20px;
+}
+
+.conflict-list li {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.conflict-list p {
+    margin: 0;
+}

@@ -2,62 +2,109 @@
 <!DOCTYPE html>
 <head>
     <title>Purdue Gameday Parking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='globals.css') }}">
 </head>
 <body>
+    <!-- Topbar -->
+    <section class="topbar" id="topbar">
+        <img src="/static/icons/purdue-edu-logo.png" alt="" width="80" height="80">
+        <div>
+            <h1>Purdue Gameday Parking</h1>
+            <p>Avoid tow times when parking near Ross-Ade</p>
+        </div>
+    </section>
     <!-- Error Messages (if any exist in session through flash) -->
     {% with messages = get_flashed_messages() %}
         {% if messages %}
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
+            <ul>
+                {% for message in messages %}
+                    <li style="color: red; margin: 10px;">{{ message }}</li>
+                {% endfor %}
+            </ul>
         {% endif %}
     {% endwith %}
-    <!-- Course List -->
-    {% for course in courses %}
-        <li>
-            <p>{{ course.name }} {{ course.displayStartTime }} to {{ course.displayEndTime }}</p>
-            <!-- Remove course button -->
-            <form method="POST" action="{{ url_for('main.remove_user_course', course_name=course.name) }}">
-                <button type="submit">Remove</button>
+    <section class="courses" id="courses">
+        <!-- Course List -->
+        <div class="container">
+            <h2>Course List</h2>
+            <ul id="course-list">
+                {% for course in courses %}
+                    <li>
+                        <div class="course-header">
+                            <h4>{{ course.name }}</h4>
+                            <!-- Remove course button -->
+                            <form method="POST" action="{{ url_for('main.remove_user_course', course_name=course.name) }}">
+                                <button type="submit" class="delete-button">
+                                    <img src="/static/icons/trash-icon.svg" alt="" width="18" height="18">
+                                </button>
+                            </form>
+                        </div>
+                        <p>{{ course.displayStartTime }} to {{ course.displayEndTime }}</p>
+                    </li>
+                {% else %}
+                    <li style="text-align: center;">Add a course using the form</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- Course input form -->
+        <div class="container">
+            <h2>Add Courses</h2>
+            <form method="POST" action="/addCourse" id="course-form">
+                <div class="field">
+                    <label for="course_name">Course Name</label>
+                    <input type="text" id="course_name" name="course_name" required>
+                </div>
+
+                <div class="field">
+                    <label for="course_days">Course Days</label>
+                    <select id="course_days" name="course_days" size="5" multiple required>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="course_start">Start Time</label>
+                    <input type="time" id="course_start" name="course_start" required>
+                </div>
+
+                <div class="field">
+                    <label for="course_end">End Time</label>
+                    <input type="time" id="course_end" name="course_end" required>
+                </div>
+
+                <button type="submit">Add Course</button>
             </form>
-        </li>
-    {% else %}
-        <li>Add a course using the form</li>
-    {% endfor %}
-    <!-- Course input form -->
-    <form method="POST" action="/addCourse">
-        <label for="course_name">Course Name</label>
-        <input type="text" id="course_name" name="course_name" required>
-
-        <label for="course_days">Course Days</label>
-        <select id="course_days" name="course_days" size="5" multiple required>
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-        </select>
-
-        <label for="course_start">Start Time</label>
-        <input type="time" id="course_start" name="course_start" required>
-
-        <label for="course_end">End Time</label>
-        <input type="time" id="course_end" name="course_end" required>
-
-        <button type="submit">Add Course</button>
-    </form>
+        </div>
+    </section>
     <!-- List of games -->
-    <ul>
-    {% for game in games %}
-        <li>{{ game.type }} vs. {{ game.team }} - {{ game.dayOfWeek }}, {{ game.displayDate }} @ {{ game.displayTime }}</li>
-        <!-- Sublist of courses that likely conflict with the game's tow time -->
+    <section class="games container" id="games">
         <ul>
-        {% for conflict in game.conflicts %}
-            <li>{{ conflict.course }} ({{ conflict.startTime }} to {{ conflict.endTime }}) - {{ conflict.conflictLevel }}</li>
+        <h2>Upcoming Home Games</h2>
+        {% for game in games %}
+            <li>
+                <h4>{{ game.type }} vs. {{ game.team }} - {{ game.dayOfWeek }}, {{ game.displayDate }} @ {{ game.displayTime }}</h4>
+                <!-- Sublist of courses that likely conflict with the game's tow time -->
+                <ul class="conflict-list">
+                {% for conflict in game.conflicts %}
+                    <li>
+                        <div>
+                            <p><b>{{ conflict.course }}</b></p>
+                            <p>{{ conflict.startTime }} - {{ conflict.endTime }}</p>
+                        </div>
+                        <p><b>{{ conflict.conflictLevel }}</b></p>
+                    </li>
+                {% endfor %}
+                </ul>
+            </li>
+        {% else %}
+            <li>
+                <p>No games found</p>
+            </li>
         {% endfor %}
         </ul>
-    {% else %}
-        <li>No games found</li>
-    {% endfor %}
-    </ul>
+    </section>
 </body>
