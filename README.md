@@ -37,9 +37,9 @@ python app.py
 
 ## Roadmap
 
-- [ ] Exclude games on class breaks
-- [ ] Frontend + Mobile design
+- [x] Frontend + Mobile design
 - [ ] Web hosting
+- [ ] Exclude games on class breaks
 - [ ] View exam conflicts
 - [ ] Include Friday football games
 - [ ] Select courses from Purdue course catalogue (api.purdue.io)
