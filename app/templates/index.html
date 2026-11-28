@@ -41,7 +41,10 @@
                                 </button>
                             </form>
                         </div>
-                        <p>{{ course.displayStartTime }} to {{ course.displayEndTime }}</p>
+                        <div class="course-footer">
+                            <p>{{ course.displayStartTime }} to {{ course.displayEndTime }}</p>
+                            <p>{{ course.displayDays }}</p>
+                        </div>
                     </li>
                 {% else %}
                     <li style="text-align: center;">Add a course using the form</li>
