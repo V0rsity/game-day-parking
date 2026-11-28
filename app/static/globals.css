@@ -78,6 +78,20 @@ h2 {
     gap: 10px;
 }
 
+#course-form button {
+    border: none;
+    background-color: #3d3c3c;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+#course-form button:hover {
+    background-color: #3d3c3cee;
+}
+
 #course-form label {
     font-weight: bold;
 }
@@ -93,7 +107,13 @@ h2 {
     align-items: center;
     width: 100%;
     justify-content: flex-start;
-    gap: 5px;
+    gap: 8px;
+}
+
+.day-input input[type="checkbox"] {
+    accent-color: #3d3c3c;
+    width: 1rem;
+    height: 1rem;
 }
 
 .day-input label {
