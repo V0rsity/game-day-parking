@@ -1,1 +1,227 @@
 /* Stylesheet for index.html */
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #3d3c3c;
+}
+
+/* Top bar */
+
+.topbar {
+    background-color: black;
+    color: #ddd;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.topbar img {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.topbar h1 {
+    margin-bottom: 0;
+}
+
+/* Error Section */
+
+.errors ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Courses section */
+
+.courses {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.courses ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.courses .container {
+    width: 20%;
+}
+
+.container {
+    padding: 30px;
+    background-color: #CFB991;
+    border-radius: 18px;
+    margin-top: 15px;
+}
+
+h2 {
+    justify-self: center;
+    font-size: 22px;
+    margin-top: 0;
+}
+
+/* Course Form */
+
+#course-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#course-form button {
+    border: none;
+    background-color: #3d3c3c;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+#course-form button:hover {
+    background-color: #3d3c3cee;
+}
+
+#course-form label {
+    font-weight: bold;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.day-input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 8px;
+}
+
+.day-input input[type="checkbox"] {
+    accent-color: #3d3c3c;
+    width: 1rem;
+    height: 1rem;
+}
+
+.day-input label {
+    font-weight: normal !important;  /* These are the only labels that should not be bold */
+}
+
+.day-input.top {
+    margin-top: 5px;
+}
+
+/* Course List */
+
+#course-list {
+    align-items: center;
+}
+
+#course-list p {
+    font-size: 14px;
+}
+
+#course-list .course-header h4 {
+    margin: 0;
+}
+
+#course-list .course-header {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+#course-list .course-footer h4 {
+    margin: 0;
+}
+
+#course-list .course-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.delete-button {
+    background: none;
+    border: none;
+    border-radius: 4px;
+}
+
+.delete-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+/* Games section */
+
+.games h4 {
+    margin-bottom: 0;
+    font-size: 18px;
+}
+
+.games ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.conflict-list {
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.conflict-list li {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.conflict-list p {
+    margin: 0;
+}
+
+.conflict-badge {
+    padding: 4px 8px 4px 8px;
+    border-radius: 5px;
+}
+
+/* Notes section */
+
+.notes {
+    margin-top: 25px;
+    background-color: #CFB991;
+    color: black;
+    width: 100%;
+}
+
+.notes h4 {
+    margin-top: 0;
+}
+
+.notes li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.notes-container {
+    padding: 30px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
