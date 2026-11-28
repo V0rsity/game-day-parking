@@ -1,18 +1,30 @@
 # File containing flask routes "/", "/addCourse", "/removeCourse"
 
 from flask import Blueprint, render_template, redirect, session, request, flash
-from datetime import datetime
+from datetime import datetime, timedelta
 from app.games import get_weekday_home_games
 from app.courses import add_course, remove_course
 from app.conflicts import add_conflicts
+
+GAMES_CACHE_MINUTES = 10 # Games do not change frequently, so 10 minutes is a reliable cache time
 
 main_blueprint = Blueprint("main", __name__)
 
 # The route that returns the main page.
 @main_blueprint.route("/")
 def main_page():
+    # Cache the games fetched from ESPN for 10 minutes. Without this, the app had to pull from ESPN after every add/remove course
+    # Skipping this repetitive API call greatly reduces page load time
+    # Reduces the API requests from ESPN so less chance of rate limiting
+    last_game_fetch_time = session.get("games_fetch_time")
+    games = session.get("games")
+    now = datetime.now()
+    if (not games) or (not last_game_fetch_time) or (now - timedelta(minutes=GAMES_CACHE_MINUTES) > datetime.fromisoformat(last_game_fetch_time)):
+        games = get_weekday_home_games()
+        session["games"] = games
+        session["games_fetch_time"] = now.isoformat()
+
     courses = session.get("courses") or []
-    games = get_weekday_home_games()
     add_conflicts(games, courses)
     return render_template("index.html", games=games, courses=courses)
 
