@@ -9,6 +9,19 @@ body {
     background-color: #3d3c3c;
 }
 
+.show-mobile {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .hide-mobile {
+        display: none;
+    }
+    .show-mobile {
+        display: block;
+    }
+}
+
 /* Top bar */
 
 .topbar {
@@ -26,6 +39,19 @@ body {
 
 .topbar h1 {
     margin-bottom: 0;
+}
+
+@media screen and (max-width: 600px) {
+    .topbar h1 {
+        margin: 0;
+    }
+    .topbar img {
+        margin: 20px;
+    }
+    .topbar p {
+        margin-top: 0;
+        text-align: center;
+    }
 }
 
 /* Error Section */
@@ -67,6 +93,23 @@ h2 {
     justify-self: center;
     font-size: 22px;
     margin-top: 0;
+}
+
+@media screen and (max-width: 600px) {
+    .courses {
+        flex-direction: column-reverse;
+        gap: 0;
+    }
+
+    .courses .container {
+        width: auto;
+        margin: 15px 10px 0;
+    }
+
+    .container {
+        width: auto;
+        margin: 15px 10px 0;
+    }
 }
 
 /* Course Form */
@@ -122,6 +165,19 @@ h2 {
 
 .day-input.top {
     margin-top: 5px;
+}
+
+@media screen and (max-width: 600px) {
+    #course-form {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+
+    #course-form button {
+        margin-top: 12px;
+    }
 }
 
 /* Course List */
@@ -196,6 +252,7 @@ h2 {
 .conflict-badge {
     padding: 4px 8px 4px 8px;
     border-radius: 5px;
+    white-space: nowrap;
 }
 
 /* Notes section */
@@ -224,4 +281,17 @@ h2 {
     display: flex;
     align-items: center;
     gap: 15px;
+}
+
+@media screen and (max-width: 600px) {
+
+    .notes ul {
+        list-style-type: none;
+        padding: 0 8px;
+    }
+
+    .notes li {
+        margin: 8px 0 8px;
+    }
+
 }

@@ -4,13 +4,17 @@
     <title>Purdue Gameday Parking</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='globals.css') }}">
     <link rel="icon" type="image/png" href="/static/icons/purdue-edu-logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <!-- Topbar -->
     <section class="topbar" id="topbar">
-        <img src="/static/icons/purdue-edu-logo.png" alt="" width="80" height="80">
+        <img src="/static/icons/purdue-edu-logo.png" class="hide-mobile" alt="" width="80" height="80">
         <div>
-            <h1>Purdue Gameday Parking</h1>
+            <div style="display: flex; align-items: center;">
+                <img src="/static/icons/purdue-edu-logo.png" class="show-mobile" alt="" width="60" height="60">
+                <h1>Purdue Gameday Parking</h1>
+            </div>
             <p>Avoid tow times when parking near Ross-Ade</p>
         </div>
     </section>
@@ -140,15 +144,15 @@
             <div class="legend">
                 <div class="legend-item">
                     <div class="conflict-badge" style="background-color: #FF000095;"><b>Very Likely</b></div>
-                    <p>The course occurs during or after 5:00 PM, typically the latest tow time for lots near Ross-Ade.</p>
+                    <p>The course occurs during or after 5:00 PM<span class="hide-mobile">, typically the latest tow time for lots near Ross-Ade</span>.</p>
                 </div>
                 <div class="legend-item">
                     <div class="conflict-badge" style="background-color: #FFA50095;"><b>Likely</b></div>
-                    <p>The course occurs within 2 hours of the game start time. 4:30 PM tow times are typical for 6:30 PM games.</p>
+                    <p>The course occurs within 2 hours of the game start time.<span class="hide-mobile"> 4:30 PM tow times are typical for 6:30 PM games.</span></p>
                 </div>
                 <div class="legend-item">
                     <div class="conflict-badge" style="background-color: #FFFF0095;"><b>Possible</b></div>
-                    <p>The course occurs within 2.5 hours of the game start time. These early tow times could be possible for larger games.</p>
+                    <p>The course occurs within 2.5 hours of the game start time.<span class="hide-mobile"> These early tow times could be possible for larger games.</span></p>
                 </div>
             </div>
         </div>
