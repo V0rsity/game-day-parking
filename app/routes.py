@@ -22,9 +22,25 @@ def add_user_course():
 
     # Get the course inputs from html form
     course_name = request.form.get("course_name")
-    course_days = request.form.getlist("course_days")
+    is_on_monday = request.form.get("is_on_monday")
+    is_on_tuesday = request.form.get("is_on_tuesday")
+    is_on_wednesday = request.form.get("is_on_wednesday")
+    is_on_thursday = request.form.get("is_on_thursday")
+    is_on_friday = request.form.get("is_on_friday")
     course_start = request.form.get("course_start")
     course_end = request.form.get("course_end")
+
+    course_days = []
+    if is_on_monday:
+        course_days.append("Monday")
+    if is_on_tuesday:
+        course_days.append("Tuesday")
+    if is_on_wednesday:
+        course_days.append("Wednesday")
+    if is_on_thursday:
+        course_days.append("Thursday")
+    if is_on_friday:
+        course_days.append("Friday")
 
     try:
         start_time = datetime.strptime(course_start, "%H:%M")

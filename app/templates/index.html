@@ -16,11 +16,13 @@
     <!-- Error Messages (if any exist in session through flash) -->
     {% with messages = get_flashed_messages() %}
         {% if messages %}
-            <ul>
-                {% for message in messages %}
-                    <li style="color: red; margin: 10px;">{{ message }}</li>
-                {% endfor %}
-            </ul>
+            <div class="errors">
+                <ul>
+                    {% for message in messages %}
+                        <li style="color: red; margin: 10px;">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
         {% endif %}
     {% endwith %}
     <section class="courses" id="courses">
@@ -56,14 +58,27 @@
                 </div>
 
                 <div class="field">
-                    <label for="course_days">Course Days</label>
-                    <select id="course_days" name="course_days" size="5" multiple required>
-                        <option value="Monday">Monday</option>
-                        <option value="Tuesday">Tuesday</option>
-                        <option value="Wednesday">Wednesday</option>
-                        <option value="Thursday">Thursday</option>
-                        <option value="Friday">Friday</option>
-                    </select>
+                    <label>Course Days</label>
+                    <div class="day-input top">
+                        <input type="checkbox" id="is_on_monday" name="is_on_monday">
+                        <label for="is_on_monday">Monday</label>
+                    </div>
+                    <div class="day-input">
+                        <input type="checkbox" id="is_on_tuesday" name="is_on_tuesday">
+                        <label for="is_on_tuesday">Tuesday</label>
+                    </div>
+                    <div class="day-input">
+                        <input type="checkbox" id="is_on_wednesday" name="is_on_wednesday">
+                        <label for="is_on_wednesday">Wednesday</label>
+                    </div>
+                    <div class="day-input">
+                        <input type="checkbox" id="is_on_thursday" name="is_on_thursday">
+                        <label for="is_on_thursday">Thursday</label>
+                    </div>
+                    <div class="day-input">
+                        <input type="checkbox" id="is_on_friday" name="is_on_friday">
+                        <label for="is_on_friday">Friday</label>
+                    </div>
                 </div>
 
                 <div class="field">
